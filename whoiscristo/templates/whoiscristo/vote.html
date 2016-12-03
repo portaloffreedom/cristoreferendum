@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Vote</title>
+</head>
+<body>
+<h1>Select your vote for this week!</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="choice">Select your vote:</label>
+    <select id="choice" name="choice">
+        {% for choice in choices %}
+        <option value="{{choice.id}}">{{choice.user}} - {{choice.reason}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit">
+</form>
+
+<p>or <a href="{% url 'create_choice' %}">create a new one</a></p>
+
+</body>
+</html>

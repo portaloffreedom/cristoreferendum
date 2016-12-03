@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Vote</title>
+</head>
+<body>
+<h1>Create a new Vote choice</h1>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="user">Select user</label>
+        <select id="user" name="user">
+            {% for user in users %}
+            <option value="{{user.id}}">{{user}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <label for="reason">Select Reason</label>
+        <textarea id="reason" name="reason"></textarea>
+    </div>
+
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+</body>
+</html>
